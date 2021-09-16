@@ -28,30 +28,38 @@ function DanmakuRollItem(props) {
             toValue: rollToValue,
             duration: (rollValue.current - rollToValue) / (props.speed * props.speed),
             easing: Easing.linear,
-            useNativeDriver: true
+            useNativeDriver: true,
         }).start();
     }, [props.playState, rollToValue, props.speed]);
-    return (<Animated.Text onLayout={init} numberOfLines={1} style={{
-        position: 'absolute',
+    return (<Animated.View onLayout={init} style={{
+        position: "absolute",
         top: props.initVertical,
         left: props.initLeft,
         transform: [
             {
-                translateX: rollAnim
-            }
+                translateX: rollAnim,
+            },
         ],
-        color: props.color ? props.color : '#fff',
-        fontSize: props.fontSize,
-        fontWeight: 'bold',
-        textShadowRadius: props.shadowHidden ? undefined : 1,
-        textShadowColor: props.shadowHidden ? undefined : `rgba(0,0,0,${props.opacity})`,
-        opacity: props.opacity,
+        height: 24,
         borderWidth: props.mark ? 1 : 0,
-        borderColor: '#777',
-        paddingHorizontal: 2
+        borderColor: "#777",
+        borderRadius: 15,
+        backgroundColor: props.color ? props.color : "rgba(0,0,0,0.3)",
+        justifyContent: "center",
     }}>
-            {props.msg}
-        </Animated.Text>);
+      <Animated.Text style={{
+        color: "#fff",
+        fontSize: 14 || props.fontSize,
+        fontWeight: "500",
+        textShadowRadius: props.shadowHidden ? undefined : 1,
+        textShadowColor: props.shadowHidden
+            ? undefined
+            : `rgba(0,0,0,${props.opacity})`,
+        opacity: props.opacity,
+    }}>
+        {props.msg}
+      </Animated.Text>
+    </Animated.View>);
 }
 export default memo(DanmakuRollItem);
 //# sourceMappingURL=DanmakuRollItem.js.map
