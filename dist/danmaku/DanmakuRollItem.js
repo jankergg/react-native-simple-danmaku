@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { useEffect, useRef, useState, memo } from 'react';
-import { Animated, Easing } from 'react-native';
+import * as React from "react";
+import { useEffect, useRef, useState, memo } from "react";
+import { Animated, Easing } from "react-native";
 function DanmakuRollItem(props) {
     const rollAnim = useRef(new Animated.Value(0)).current;
     const rollValue = useRef(0);
@@ -44,6 +44,8 @@ function DanmakuRollItem(props) {
         borderWidth: props.mark ? 1 : 0,
         borderColor: "#777",
         borderRadius: 15,
+        paddingLeft: 5,
+        paddingRight: 5,
         backgroundColor: props.color ? props.color : "rgba(0,0,0,0.3)",
         justifyContent: "center",
     }}>
@@ -51,10 +53,10 @@ function DanmakuRollItem(props) {
         color: "#fff",
         fontSize: 14 || props.fontSize,
         fontWeight: "500",
+        paddingLeft: 10,
+        paddingRight: 10,
         textShadowRadius: props.shadowHidden ? undefined : 1,
-        textShadowColor: props.shadowHidden
-            ? undefined
-            : `rgba(0,0,0,${props.opacity})`,
+        textShadowColor: props.shadowHidden ? undefined : `rgba(0,0,0,${props.opacity})`,
         opacity: props.opacity,
     }}>
         {props.msg}
